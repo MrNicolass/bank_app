@@ -1,6 +1,15 @@
-# n1nicolas
+<h1 align="center">
+<img width="32" height="32" src="https://img.icons8.com/color/48/flutter.png" alt="flutter"/> Bank App
+</h1>
 
-A new Flutter project.
+<p align="center"> A flutter project made in Católica University of Jaraguá do Sul (CatólicaSC) for the Mobile Development discipline of the Software Engineering degree.</p>
+
+<h4 align="center"> 
+	🚧 In development... 🚧
+</h4>
+
+> [!NOTE]
+>This app is being developed for study and exemplification of development with Flutter/Dart. It is worth mentioning that this app is not to be used for commercial purposes.
 
 ## Getting Started
 
