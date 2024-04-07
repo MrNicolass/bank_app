@@ -66,6 +66,22 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
+    - assets/fonts/Montserrat/
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+          weight: 900
+        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+          weight: 900
+          style: italic
+    - family: C6Sans
+      fonts:
+        - asset: assets/fonts/C6Sans/C6SansDisplay-Regular.ttf
+          weight: 200
+        - asset: assets/fonts/C6Sans/C6SansDisplay-Bold.ttf
+          weight: 900
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
