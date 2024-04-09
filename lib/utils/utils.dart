@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:n1nicolas/utils/utils.dart' as utils;
 
@@ -78,13 +80,55 @@ ButtonStyle ButtonFullTransp(){
   );
 }
 
+Align miniBoxButton({context, required String text, bool isBlue = false}){
+  return Align(
+    alignment: Alignment.bottomCenter,
+    child: Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.03,
+      decoration: BoxDecoration(
+        color: isBlue == true ? Color.fromARGB(255, 24, 24, 24) : Color.fromARGB(255, 252, 209, 50),
+        border: Border(
+          top: BorderSide(color: isBlue == true ? Color.fromARGB(255, 80, 80, 80) : Colors.black, width: 0.1),
+        ),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
+      child: ElevatedButton(
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all(EdgeInsets.zero),
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            alignment: Alignment.centerLeft,
+          ),
+          onPressed: () {},
+          child: Padding(
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02, right: MediaQuery.of(context).size.width * 0.01),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(text, style: utils.textoPequeno().copyWith(color: isBlue == true ? Colors.blue : Colors.black)),
+                    Icon(Icons.arrow_forward_ios, color: isBlue == true ? Colors.blue : Colors.black, size: 15)
+                  ]
+              )
+          )
+      ),
+    ),
+  );
+}
+
 //#endregion EstiloBotao
 
 Container miniBox({required Widget child, context}){
   return Container(
     height: MediaQuery.of(context).size.height * 0.11,
     width: MediaQuery.of(context).size.width * 0.25,
-    color: const Color.fromARGB(255, 24, 24, 24),
-    child: child,
+    decoration: BoxDecoration(
+      color: const Color.fromARGB(255, 24, 24, 24),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: child
   );
 }

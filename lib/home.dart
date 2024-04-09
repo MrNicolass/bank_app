@@ -108,7 +108,7 @@ class _HomeState extends State<Home> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.17,
                   width: double.infinity,
-                  //color: Colors.black,
+                  color: Colors.black,
                   child: Column(
                     children: [
                       Row(
@@ -127,24 +127,24 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
                               child: utils.miniBox(
-                                  child: const Icon(Icons.add, size: 30),
-                                  context: context
+                                context: context,
+                                child: utils.miniBoxButton(context: context, text: 'Investir', isBlue: true)
                               )
                           ),
                           Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
                               child: utils.miniBox(
-                                  child: const Icon(Icons.add, size: 30),
-                                  context: context
+                                context: context,
+                                child: utils.miniBoxButton(context: context, text: 'Abrir conta'),
                               )
                           ),
                           Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
                               child: utils.miniBox(
-                                  child: const Icon(Icons.add, size: 30),
-                                  context: context
+                                context: context,
+                                child: utils.miniBoxButton(context: context, text: 'Abrir conta')
                               )
                           ),
                         ],
