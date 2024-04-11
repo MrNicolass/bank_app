@@ -1,5 +1,17 @@
+//#region Imports
+
+//Importações flutter
 import 'package:flutter/material.dart';
+
+//Importações de projetos
 import 'package:n1nicolas/utils/utils.dart' as utils;
+import 'package:n1nicolas/utils/topBar.dart' as topb;
+import 'package:n1nicolas/cards.dart' as cards;
+import 'package:n1nicolas/saldo.dart' as saldo;
+import 'package:n1nicolas/invest.dart' as invest;
+import 'package:n1nicolas/store.dart' as store;
+
+//#endregion Imports
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,49 +23,105 @@ class Home extends StatefulWidget {
 //Classe para definir a tela inicial do app com um estado mutável
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+  late PageController _pageController;
 
-  void _onItemTapped(int index) {
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+  void _onItemTapped(int index) {
+    _pageController.jumpToPage(index);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 12, 12, 12),
-        automaticallyImplyLeading: false,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, //Alinha os Text na esquerda
-            children: [
-              Text('Bem vindo,', style: utils.textoPequeno()),
-              Text('Nicolas', style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold)),
+      appBar: topb.TopBar(),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        children: [
+          Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                color: const Color.fromARGB(255, 12, 12, 12),
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.17,
+                      width: double.infinity,
+                      color: Colors.black,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Saldos', style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold)),
+                              InkWell(
+                                onTap: () {},
+                                child: Text('Exibir Extratos',
+                                    style: utils.textoPequeno().copyWith(fontWeight: FontWeight.bold, color: Colors.blue)
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
+                                  child: utils.miniBox(
+                                    context: context,
+                                    child: utils.miniBoxButton(context: context, text: 'Investir', isBlue: true)
+                                  )
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
+                                  child: utils.miniBox(
+                                    context: context,
+                                    child: utils.miniBoxButton(context: context, text: 'Abrir conta'),
+                                  )
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
+                                  child: utils.miniBox(
+                                    context: context,
+                                    child: utils.miniBoxButton(context: context, text: 'Abrir conta')
+                                  )
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.help_outline),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.chat_bubble_outline_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.remove_red_eye_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.account_circle_outlined),
-          ),
+          cards.Cards(),
+          saldo.Saldo(),
+          invest.Invest(),
+          store.Store(),
         ],
       ),
       bottomNavigationBar: Theme(
@@ -93,69 +161,6 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-      ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            color: const Color.fromARGB(255, 12, 12, 12),
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.17,
-                  width: double.infinity,
-                  color: Colors.black,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Saldos', style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold)),
-                          InkWell(
-                            onTap: () {},
-                            child: Text('Exibir Extratos',
-                                style: utils.textoPequeno().copyWith(fontWeight: FontWeight.bold, color: Colors.blue)
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                              child: utils.miniBox(
-                                context: context,
-                                child: utils.miniBoxButton(context: context, text: 'Investir', isBlue: true)
-                              )
-                          ),
-                          Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                              child: utils.miniBox(
-                                context: context,
-                                child: utils.miniBoxButton(context: context, text: 'Abrir conta'),
-                              )
-                          ),
-                          Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                              child: utils.miniBox(
-                                context: context,
-                                child: utils.miniBoxButton(context: context, text: 'Abrir conta')
-                              )
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }
