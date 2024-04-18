@@ -11,15 +11,45 @@
 > [!NOTE]
 >This app is being developed for study and exemplification of development with Flutter/Dart. It is worth mentioning that this app is not to be used for commercial purposes.
 
-## Getting Started
+It aims to develop an application inspired by a digital banking institution. Its screens are aimed at a modern, simple and refined style, seeking rounded edges, agility in screen transitions (few loading screens and pre-loaded elements) and concentration of buttons and menus on a few screens, always maintaining organization and practicality.
 
-This project is a starting point for a Flutter application.
+The scope is an application of a digital back, whose mockup is authored by the Company/Bank <a href="https://www.c6bank.com.br/"  target="_blank"> C6 Bank </a>:
+<h1 align="center">
+    <img alt="App Music" title="#AppMusic" src="https://passageirodeprimeira.com/wp-content/uploads/2022/11/passageirodeprimeira.com-img-9450-323x700.jpg" />
+</h1>
 
-A few resources to get you started if this is your first Flutter project:
+The screens that are not contemplated in the mockup, i sought to use the same elements and colors, to maintain the mockup pattern.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This app has the following functionalities to be developed:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Introductory Screen:
+- Login;
+- Register.
+  
+## Login Screen:
+- Log in with CPF (Citizen Registration number of Brazil) and account password;
+- Recover password;
+- Log in with biometrics (fingerprint or facial recognition).
+
+## Registration Screen:
+- Registration using personal data;
+- Take a photo for the profile with the camera;
+- Choose a photo from the gallery to insert in the profile.
+
+## Home Screen:
+- Balance of the account (in many types of currency);
+- Navigate through the app by the bottom menu;
+- See the last transactions;
+- See chat messages;
+- See notifications;
+- Hide the balance;
+- See the profile;
+
+## How to run the project
+
+- Make sure that the Flutter is in version 3.19.4 and Dart in version 3.3.2;
+- Import the project to your preferred IDE (I am using Android Studio Giraffe | 2023.2.3);
+  - Make sure the IDE has the Flutter and Dart plugins installed in the versions mentioned above;
+- Go to `File > Settings > Languages & Frameworks > Flutter` and enter the path of the Flutter SDK folder in `Flutter SDK path`;
+- Open the `pubspec.yaml` file and click on `pub get`, so that the dependencies (packages) used in the project are loaded;
+- Execute the application.

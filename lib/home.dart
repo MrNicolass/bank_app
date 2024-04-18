@@ -20,7 +20,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-//Classe para definir a tela inicial do app com um estado mutável
+//Classe define que a Home tenha um estado mutável
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   late PageController _pageController;
@@ -62,60 +62,7 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
                 color: const Color.fromARGB(255, 12, 12, 12),
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.17,
-                      width: double.infinity,
-                      color: Colors.black,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Saldos', style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold)),
-                              InkWell(
-                                onTap: () {},
-                                child: Text('Exibir Extratos',
-                                    style: utils.textoPequeno().copyWith(fontWeight: FontWeight.bold, color: Colors.blue)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                                  child: utils.miniBox(
-                                    context: context,
-                                    child: utils.miniBoxButton(context: context, text: 'Investir', isBlue: true)
-                                  )
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                                  child: utils.miniBox(
-                                    context: context,
-                                    child: utils.miniBoxButton(context: context, text: 'Abrir conta'),
-                                  )
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.023),
-                                  child: utils.miniBox(
-                                    context: context,
-                                    child: utils.miniBoxButton(context: context, text: 'Abrir conta')
-                                  )
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              utils.bigBox(context: context, typeBox: 'saldo'),
             ],
           ),
           cards.Cards(),

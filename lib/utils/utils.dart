@@ -83,7 +83,7 @@ Align miniBoxButton({context, required String text, bool isBlue = false}){
     alignment: Alignment.bottomCenter,
     child: Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.03,
+      height: MediaQuery.of(context).size.height * 0.04,
       decoration: BoxDecoration(
         color: isBlue == true ? Color.fromARGB(255, 24, 24, 24) : Color.fromARGB(255, 252, 209, 50),
         border: Border(
@@ -103,7 +103,7 @@ Align miniBoxButton({context, required String text, bool isBlue = false}){
           ),
           onPressed: () {},
           child: Padding(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02, right: MediaQuery.of(context).size.width * 0.01),
+              padding: EdgeInsets.only(top: 10, bottom: 10, left: MediaQuery.of(context).size.width * 0.02, right: MediaQuery.of(context).size.width * 0.01),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -119,14 +119,137 @@ Align miniBoxButton({context, required String text, bool isBlue = false}){
 
 //#endregion EstiloBotao
 
-Container miniBox({required Widget child, context}){
+//#region EstiloContainer
+
+Container miniBox({required Widget child, context, country}){
   return Container(
-    height: MediaQuery.of(context).size.height * 0.11,
-    width: MediaQuery.of(context).size.width * 0.25,
+    height: MediaQuery.of(context).size.height * 0.15,
+    width: MediaQuery.of(context).size.width * 0.45,
     decoration: BoxDecoration(
       color: const Color.fromARGB(255, 24, 24, 24),
       borderRadius: BorderRadius.circular(10),
     ),
-    child: child
+    child: Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015, left: MediaQuery.of(context).size.width * 0.02),
+            child: Row(
+              children: [
+                Icon(Icons.flag_circle_rounded, color: Colors.white, size: 20),
+                Text(country == 'BR' ? 'Real': country == 'US' ? 'Dólar' : country == 'EU' ? 'Euro' : 'C6 Global Invest', style: utils.textoMedio()),
+              ],
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.01, left: MediaQuery.of(context).size.width * 0.02),
+            child: Text.rich(
+              TextSpan(
+                  text: country == 'BR' ? 'R\$' : country == 'US' ? 'U\$' : '€',
+                  style: utils.textoMedio(),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: '  125,00',
+                      style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold)
+                    ),
+                  ]
+              ),
+            ),
+          ),
+        ),
+        Spacer(),
+        child
+      ],
+    ),
   );
 }
+
+Column bigBox({context, typeBox = 'saldo'}){
+  return Column(
+    children: [
+      Padding(
+        padding: EdgeInsets.only(top: 15, bottom: 15),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.2,
+          width: double.infinity,
+          color: Colors.grey,
+          child: Builder (
+            builder: (context) {
+              if (typeBox == 'saldo') {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Saldos', style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold, fontSize: 18)),
+                        InkWell(
+                          onTap: () {},
+                          child: Text('Exibir extratos',
+                              style: utils.textoMedio().copyWith(fontWeight: FontWeight.bold, color: Colors.blue)
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+                                  child: utils.miniBox(
+                                      context: context,
+                                      country: 'BR',
+                                      child: utils.miniBoxButton(context: context, text: 'Investir', isBlue: true)
+                                  )
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+                                  child: utils.miniBox(
+                                    context: context,
+                                    country: 'US',
+                                    child: utils.miniBoxButton(context: context, text: 'Abrir conta'),
+                                  )
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+                                  child: utils.miniBox(
+                                      context: context,
+                                      country: 'EU',
+                                      child: utils.miniBoxButton(context: context, text: 'Abrir conta')
+                                  )
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+                                  child: utils.miniBox(
+                                      context: context,
+                                      country: 'IN',
+                                      child: utils.miniBoxButton(context: context, text: 'Abrir conta')
+                                  )
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                );
+              } else return SizedBox(
+                child: Text('Teste'),
+              );
+            }
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+//#endregion EstiloContainer
