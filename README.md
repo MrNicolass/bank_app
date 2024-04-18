@@ -13,7 +13,7 @@
 
 It aims to develop an application inspired by a digital banking institution. Its screens are aimed at a modern, simple and refined style, seeking rounded edges, agility in screen transitions (few loading screens and pre-loaded elements) and concentration of buttons and menus on a few screens, always maintaining organization and practicality.
 
-The scope is an application of a digital back, whose mockup is authored by the Company/Bank <a href="https://www.c6bank.com.br/"  target="_blank"> C6 Bank </a>:
+The scope is an application of a digital bank, whose mockup is authored by the Company/Bank <a href="https://www.c6bank.com.br/"  target="_blank"> C6 Bank </a>:
 <h1 align="center">
     <img alt="App Music" title="#AppMusic" src="https://passageirodeprimeira.com/wp-content/uploads/2022/11/passageirodeprimeira.com-img-9450-323x700.jpg" />
 </h1>
