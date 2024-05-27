@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184787282727",
+    "project_id": "bank-app-d1aa5",
+    "storage_bucket": "bank-app-d1aa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184787282727:android:f085a82f75a2e020ac5702",
+        "android_client_info": {
+          "package_name": "com.example.n1nicolas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP9gUk_Otmvl0J-VvtvAfHqktygqFANQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

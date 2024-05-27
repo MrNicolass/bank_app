@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topb.TopBar(),
+      appBar: topb.TopBar(context),
       body: PageView(
         controller: _pageController,
         onPageChanged: _onPageChanged,

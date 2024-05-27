@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:n1nicolas/utils/utils.dart' as utils;
+import 'package:n1nicolas/user.dart' as user;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../firebase_options.dart';
 
 //#region EstiloTexto
 
@@ -176,7 +180,7 @@ Column bigBox({context, typeBox = 'saldo'}){
         child: Container(
           height: MediaQuery.of(context).size.height * 0.2,
           width: double.infinity,
-          color: Colors.grey,
+          //color: Colors.grey,
           child: Builder (
             builder: (context) {
               if (typeBox == 'saldo') {
@@ -253,3 +257,47 @@ Column bigBox({context, typeBox = 'saldo'}){
 }
 
 //#endregion EstiloContainer
+
+//#region EstiloInput
+SizedBox DefaultInput(controller, BuildContext context, String label, int lines, bool isPass){
+  return SizedBox(
+    width: MediaQuery.of(context).size.width * 0.88,
+    height: MediaQuery.of(context).size.height * 0.070,
+    child: Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: TextField(
+        style: utils.textoMedio().copyWith(color: Colors.white),
+        controller: controller,
+        maxLength: lines,
+        obscureText: isPass ? true : false,
+        enableSuggestions: isPass ? false : true,
+        autocorrect: isPass ? false: true,
+        keyboardType: isPass ? TextInputType.number : TextInputType.text,
+        decoration: InputDecoration(
+          labelText: label,
+          counter: const Offstage(),
+          labelStyle: utils.textoMedio().copyWith(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white, width: 0.6),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+        ),
+      )
+    ),
+  );
+}
+
+//#endregion EstiloInput
+
+//Função para pegar os dados de um usuário
+Future<Map<String, dynamic>> getUserData() async {
+  DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+      .collection('usuarios')
+      .doc('99316466-5')
+      .get();
+
+  return documentSnapshot.data() as Map<String, dynamic>;
+}
