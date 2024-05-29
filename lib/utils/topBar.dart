@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:n1nicolas/utils/utils.dart' as utils;
-import 'package:n1nicolas/users.dart' as users;
+import 'package:n1nicolas/login.dart' as login;
+import 'package:n1nicolas/home.dart' as home;
 
 AppBar TopBar(BuildContext context){
   return AppBar(
@@ -26,6 +27,15 @@ AppBar TopBar(BuildContext context){
     ),
     actions: [
       IconButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => home.Home()),
+          );
+        },
+        icon: const Icon(Icons.home),
+      ),
+      IconButton(
         onPressed: () {},
         icon: const Icon(Icons.help_outline),
       ),
@@ -41,7 +51,7 @@ AppBar TopBar(BuildContext context){
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => users.Users()),
+            MaterialPageRoute(builder: (context) => login.Login()),
           );
         },
         icon: const Icon(Icons.account_circle_outlined),
